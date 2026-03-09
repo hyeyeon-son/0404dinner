@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinner Invitation 🍽️</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Playfair+Display:ital,wght@1,700&family=Abril+Fatface&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #fce8e3;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(200,80,80,.13) 38px, rgba(200,80,80,.13) 40px),
+                      repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(200,80,80,.13) 38px, rgba(200,80,80,.13) 40px);
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    position: relative;
+  }
+
+  .card {
+    background: #fff9f8;
+    border-radius: 24px;
+    padding: 48px 36px;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(180,60,60,.12);
+    position: relative;
+    border: 3px solid #c94040;
+    animation: fadeUp .8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(40px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* wavy border top/bottom via pseudo */
+  .card::before, .card::after {
+    content:'♥  ♥  ♥';
+    position:absolute; left:50%; transform:translateX(-50%);
+    color:#c94040; font-size:13px; letter-spacing:8px;
+  }
+  .card::before { top:-20px; }
+  .card::after  { bottom:-20px; }
+
+  /* ── SECTION 1 : INVITATION ── */
+  #invite .script {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    color: #a82828;
+    text-align: center;
+    margin-bottom: -6px;
+  }
+  #invite .big {
+    font-family: 'Abril Fatface', serif;
+    font-size: 2.8rem;
+    color: #a82828;
+    text-align: center;
+    letter-spacing: 4px;
+    margin-bottom: 32px;
+  }
+
+  .info-box {
+    background: #fde8e0;
+    border: 2px dashed #e8a090;
+    border-radius: 16px;
+    padding: 20px 28px;
+    margin-bottom: 28px;
+  }
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 10px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .info-row .ico { font-size: 1.4rem; }
+
+  .tagline {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  /* ── SECTION 2 & 3 : FAM ── */
+  .fam-title {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .fam-title .intro-txt {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #1a4a7a;
+  }
+  .fam-title .fam-big {
+    font-family: 'Abril Fatface', serif;
+    font-size: 2rem;
+    color: #1a4a7a;
+    letter-spacing: 2px;
+  }
+
+  .family-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+  }
+
+  .parents-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .person .name {
+    font-size: .95rem;
+    font-weight: 700;
+    color: #333;
+  }
+
+  /* stick figures via SVG inline */
+  .figure { width: 70px; height: 90px; }
+
+  /* connector line */
+  .connector {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    margin: 0;
+  }
+  .connector svg { width:100%; height:100%; }
+
+  .children-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  /* highlight the couple */
+  .highlight .figure-circle { fill: none; stroke: #c94040; stroke-width: 2.5; }
+  .highlight .figure-body   { stroke: #c94040; }
+  .highlight .name { color: #c94040; background:#fde8e0; padding:2px 10px; border-radius:8px; border:1.5px solid #c94040; }
+
+  /* ── SECTION 4 : SEE YOU ── */
+  #seeyou .hearts {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100%{ transform:scale(1); }
+    50%    { transform:scale(1.12); }
+  }
+  #seeyou .see-title {
+    font-family: 'Abril Fatface', serif;
+    font-size: 2.4rem;
+    text-align: center;
+    color: #a82828;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  #seeyou .see-sub {
+    text-align: center;
+    font-size: 1rem;
+    color: #888;
+  }
+
+  /* scroll indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #c94040;
+    font-size: .8rem;
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%,100%{ transform: translateX(-50%) translateY(0); }
+    50%    { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* section divider */
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg,#c94040,#e8a090,#c94040);
+    border-radius: 4px;
+    margin: 16px auto;
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════ SECTION 1 : INVITATION ════════════ -->
+<section id="invite">
+  <div class="card">
+    <p class="script">Dinner</p>
+    <p class="big">INVITATION</p>
+    <div class="info-box">
+      <div class="info-row"><span class="ico">📍</span><span>웨스틴조선 홍연</span></div>
+      <div class="info-row"><span class="ico">📅</span><span>4월 4일, SAT</span></div>
+      <div class="info-row"><span class="ico">🕕</span><span>6:00 PM</span></div>
+    </div>
+    <p class="tagline">혜연 &amp; 은직의 가족<br>함께 만나요! 🎉</p>
+  </div>
+  <div class="scroll-hint">▼ 스크롤</div>
+</section>
+
+<!-- ════════════ SECTION 2 : EUNJIK'S FAM ════════════ -->
+<section id="eunjik" style="padding:40px 20px;">
+  <img src="eunjik.png"
+       alt="Eunjik's Family"
+       style="max-width:440px; width:100%; border-radius:20px;
+              box-shadow:0 8px 32px rgba(180,60,60,.15);
+              animation:fadeUp .8s ease both;">
+  <div class="scroll-hint">▼</div>
+</section>
+
+<!-- ════════════ SECTION 3 : HYEYEON'S FAM ════════════ -->
+<section id="hyeyeon" style="padding:40px 20px;">
+  <img src="hyeyeon.png"
+       alt="Hyeyeon's Family"
+       style="max-width:440px; width:100%; border-radius:20px;
+              box-shadow:0 8px 32px rgba(180,60,60,.15);
+              animation:fadeUp .8s ease both;">
+  <div class="scroll-hint">▼</div>
+</section>
+
+<!-- ════════════ SECTION 4 : SEE YOU SOON ════════════ -->
+<section id="seeyou">
+  <div class="card">
+    <div class="hearts">💕</div>
+    <p class="see-title">SEE YOU SOON</p>
+    <div class="divider"></div>
+    <p style="text-align:center; font-size:1.1rem; font-weight:700; margin:16px 0 8px;">
+      4월 4일 토요일<br>저녁 6시
+    </p>
+    <p style="text-align:center; font-size:1rem; color:#c94040; font-weight:700; margin-bottom:20px;">
+      📍 웨스틴조선 홍연
+    </p>
+    <p style="text-align:center; font-size:.95rem; color:#777; line-height:1.8;">
+      두 가족이 함께하는 소중한 자리에<br>
+      참석해 주셔서 감사합니다 🙏<br><br>
+      혜연 &amp; 은직 드림 💌
+    </p>
+
+    <!-- 지도 iframe -->
+    <div style="margin-top:24px; border-radius:16px; overflow:hidden; border:2px solid #e8a090;">
+      <iframe
+        src="https://map.naver.com/p/entry/place/11785939?c=15,0,0,0,dh"
+        width="100%" height="220"
+        style="border:none; display:block;"
+        title="웨스틴조선 홍연 위치"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <!-- 네이버 지도 바로가기 버튼 -->
+    <a href="https://naver.me/FnXKZEkp"
+       target="_blank"
+       style="display:block; margin-top:14px; padding:13px;
+              background:#03C75A; color:#fff; font-weight:700;
+              font-size:1rem; text-align:center; border-radius:12px;
+              text-decoration:none; letter-spacing:1px;">
+      📍 네이버 지도로 길찾기
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
