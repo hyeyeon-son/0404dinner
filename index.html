@@ -99,7 +99,7 @@
     line-height: 1.7;
   }
 
-  /* ── SECTION 4 : PDF ── */
+  /* ── SECTION 4 : CANVA ── */
   #slides {
     background: #fdf4ed;
     padding: 50px 16px;
@@ -122,67 +122,6 @@
     font-size: clamp(1.6rem, 6vw, 2rem);
     color: #a82828;
     letter-spacing: 3px;
-  }
-
-  /* PDF 뷰어: 모바일에서는 다운로드 버튼 표시 */
-  .pdf-desktop {
-    display: block;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(180,60,60,.15);
-  }
-  .pdf-desktop iframe {
-    width: 100%;
-    height: 560px;
-    border: none;
-    display: block;
-  }
-
-  .pdf-mobile {
-    display: none;
-    width: 100%;
-    max-width: 440px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .pdf-mobile a {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #c94040;
-    color: #fff;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    padding: 16px 32px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 4px 16px rgba(180,60,60,.3);
-    margin-bottom: 16px;
-  }
-  .pdf-mobile .pdf-preview {
-    width: 100%;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(180,60,60,.15);
-    margin-bottom: 12px;
-  }
-  .pdf-mobile .pdf-preview img {
-    width: 100%;
-    display: block;
-  }
-  .pdf-mobile p {
-    font-size: .85rem;
-    color: #bbb;
-    margin-top: 8px;
-  }
-
-  @media (max-width: 600px) {
-    .pdf-desktop { display: none; }
-    .pdf-mobile  { display: block; }
   }
 
   /* ── SECTION 5 : SEE YOU ── */
@@ -272,7 +211,7 @@
   <div class="scroll-hint">▼</div>
 </section>
 
-<!-- ════════════ SECTION 4 : PDF SLIDES ════════════ -->
+<!-- ════════════ SECTION 4 : CANVA SLIDES ════════════ -->
 <section id="slides">
   <div class="slides-title">
     <p>오늘의 이야기</p>
@@ -280,23 +219,22 @@
     <div style="width:60px; height:3px; background:linear-gradient(90deg,#c94040,#e8a090,#c94040); border-radius:4px; margin:14px auto 0;"></div>
   </div>
 
-  <!-- PC: iframe으로 바로 보기 -->
-  <div class="pdf-desktop">
-    <iframe
-      src="slides.pdf"
-      loading="lazy">
-    </iframe>
+  <div style="width:100%; max-width:800px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 8px 32px rgba(180,60,60,.15);">
+    <div style="position:relative; width:100%; padding-bottom:56.25%; height:0;">
+      <iframe
+        loading="lazy"
+        style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+        src="https://www.canva.com/design/DAHFxkg3664/Lxu8cVRoart3FFFHVYaHNw/view?embed"
+        allowfullscreen="allowfullscreen"
+        allow="fullscreen">
+      </iframe>
+    </div>
   </div>
 
-  <!-- 모바일: 다운로드 버튼 + 안내 -->
-  <div class="pdf-mobile">
-    <a href="slides.pdf" download>
-      📄 슬라이드 보기 / 다운로드
-    </a>
-    <p>✦ 버튼을 눌러 슬라이드를 확인해요 ✦</p>
-  </div>
-
-  <div class="scroll-hint" style="position:relative; bottom:auto; margin-top:28px; transform:none; left:auto; animation:bounce 1.5s ease-in-out infinite;">▼</div>
+  <p style="text-align:center; font-size:.85rem; color:#bbb; margin-top:16px;">
+    ✦ 슬라이드를 넘기며 함께 이야기 나눠요 ✦
+  </p>
+  <div class="scroll-hint" style="position:relative; bottom:auto; margin-top:24px; transform:none; left:auto; animation:bounce 1.5s ease-in-out infinite;">▼</div>
 </section>
 
 <!-- ════════════ SECTION 5 : SEE YOU SOON ════════════ -->
