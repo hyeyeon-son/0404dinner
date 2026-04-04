@@ -22,21 +22,20 @@
     color: #333;
   }
 
-  /* ── SECTION BASE ── */
   section {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px 20px;
+    padding: 60px 16px;
     position: relative;
   }
 
   .card {
     background: #fff9f8;
     border-radius: 24px;
-    padding: 48px 36px;
+    padding: 32px 20px;
     max-width: 440px;
     width: 100%;
     box-shadow: 0 8px 32px rgba(180,60,60,.12);
@@ -50,7 +49,6 @@
     to   { opacity:1; transform:translateY(0); }
   }
 
-  /* wavy border top/bottom via pseudo */
   .card::before, .card::after {
     content:'♥  ♥  ♥';
     position:absolute; left:50%; transform:translateX(-50%);
@@ -59,119 +57,135 @@
   .card::before { top:-20px; }
   .card::after  { bottom:-20px; }
 
-  /* ── SECTION 1 : INVITATION ── */
+  /* ── SECTION 1 ── */
   #invite .script {
     font-family: 'Playfair Display', serif;
-    font-size: 2.6rem;
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
     color: #a82828;
     text-align: center;
     margin-bottom: -6px;
   }
   #invite .big {
     font-family: 'Abril Fatface', serif;
-    font-size: 2.8rem;
+    font-size: clamp(2rem, 7vw, 2.8rem);
     color: #a82828;
     text-align: center;
     letter-spacing: 4px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .info-box {
     background: #fde8e0;
     border: 2px dashed #e8a090;
     border-radius: 16px;
-    padding: 20px 28px;
-    margin-bottom: 28px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
   }
   .info-row {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     margin: 10px 0;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 4vw, 1.1rem);
     font-weight: 700;
   }
-  .info-row .ico { font-size: 1.4rem; }
+  .info-row .ico { font-size: 1.3rem; }
 
   .tagline {
     text-align: center;
-    font-size: 1.25rem;
+    font-size: clamp(1.05rem, 4vw, 1.25rem);
     font-weight: 700;
     color: #333;
     line-height: 1.7;
   }
 
-  /* ── SECTION 2 & 3 : FAM ── */
-  .fam-title {
-    text-align: center;
-    margin-bottom: 28px;
+  /* ── SECTION 4 : PDF ── */
+  #slides {
+    background: #fdf4ed;
+    padding: 50px 16px;
   }
-  .fam-title .intro-txt {
+
+  .slides-title {
+    text-align: center;
+    margin-bottom: 24px;
+    animation: fadeUp .8s ease both;
+  }
+  .slides-title p:first-child {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 1.5rem;
-    color: #1a4a7a;
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    color: #b05a7a;
+    margin-bottom: 4px;
   }
-  .fam-title .fam-big {
+  .slides-title p:last-child {
     font-family: 'Abril Fatface', serif;
-    font-size: 2rem;
-    color: #1a4a7a;
-    letter-spacing: 2px;
+    font-size: clamp(1.6rem, 6vw, 2rem);
+    color: #a82828;
+    letter-spacing: 3px;
   }
 
-  .family-tree {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
+  /* PDF 뷰어: 모바일에서는 다운로드 버튼 표시 */
+  .pdf-desktop {
+    display: block;
     width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(180,60,60,.15);
   }
-
-  .parents-row {
-    display: flex;
-    justify-content: space-around;
+  .pdf-desktop iframe {
     width: 100%;
-    margin-bottom: 0;
+    height: 560px;
+    border: none;
+    display: block;
   }
 
-  .person {
-    display: flex;
-    flex-direction: column;
+  .pdf-mobile {
+    display: none;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .pdf-mobile a {
+    display: inline-flex;
     align-items: center;
-    gap: 6px;
-  }
-
-  .person .name {
-    font-size: .95rem;
+    gap: 10px;
+    background: #c94040;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.05rem;
     font-weight: 700;
-    color: #333;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(180,60,60,.3);
+    margin-bottom: 16px;
   }
-
-  /* stick figures via SVG inline */
-  .figure { width: 70px; height: 90px; }
-
-  /* connector line */
-  .connector {
+  .pdf-mobile .pdf-preview {
     width: 100%;
-    height: 50px;
-    position: relative;
-    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(180,60,60,.15);
+    margin-bottom: 12px;
   }
-  .connector svg { width:100%; height:100%; }
-
-  .children-row {
-    display: flex;
-    justify-content: space-around;
+  .pdf-mobile .pdf-preview img {
     width: 100%;
-    margin-top: 0;
+    display: block;
+  }
+  .pdf-mobile p {
+    font-size: .85rem;
+    color: #bbb;
+    margin-top: 8px;
   }
 
-  /* highlight the couple */
-  .highlight .figure-circle { fill: none; stroke: #c94040; stroke-width: 2.5; }
-  .highlight .figure-body   { stroke: #c94040; }
-  .highlight .name { color: #c94040; background:#fde8e0; padding:2px 10px; border-radius:8px; border:1.5px solid #c94040; }
+  @media (max-width: 600px) {
+    .pdf-desktop { display: none; }
+    .pdf-mobile  { display: block; }
+  }
 
-  /* ── SECTION 4 : SEE YOU ── */
+  /* ── SECTION 5 : SEE YOU ── */
   #seeyou .hearts {
     font-size: 3.5rem;
     text-align: center;
@@ -184,19 +198,13 @@
   }
   #seeyou .see-title {
     font-family: 'Abril Fatface', serif;
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
     text-align: center;
     color: #a82828;
     letter-spacing: 2px;
     margin-bottom: 12px;
   }
-  #seeyou .see-sub {
-    text-align: center;
-    font-size: 1rem;
-    color: #888;
-  }
 
-  /* scroll indicator */
   .scroll-hint {
     position: absolute;
     bottom: 24px;
@@ -215,7 +223,6 @@
     50%    { transform: translateX(-50%) translateY(8px); }
   }
 
-  /* section divider */
   .divider {
     width: 60px; height: 3px;
     background: linear-gradient(90deg,#c94040,#e8a090,#c94040);
@@ -229,12 +236,10 @@
 <!-- ════════════ SECTION 1 : INVITATION ════════════ -->
 <section id="invite">
   <div class="card">
-    <!-- 커플 사진 -->
     <div style="border-radius:16px; overflow:hidden; margin-bottom:20px; border:3px solid #e8a090;">
       <img src="couple.png" alt="혜연 & 은직"
-           style="width:100%; display:block; object-fit:cover; max-height:280px;">
+           style="width:100%; display:block; object-fit:cover; max-height:260px;">
     </div>
-
     <p class="script">Dinner</p>
     <p class="big">INVITATION</p>
     <div class="info-box">
@@ -248,7 +253,7 @@
 </section>
 
 <!-- ════════════ SECTION 2 : EUNJIK'S FAM ════════════ -->
-<section id="eunjik" style="padding:40px 20px;">
+<section id="eunjik" style="padding:40px 16px;">
   <img src="eunjik.png"
        alt="Eunjik's Family"
        style="max-width:440px; width:100%; border-radius:20px;
@@ -258,7 +263,7 @@
 </section>
 
 <!-- ════════════ SECTION 3 : HYEYEON'S FAM ════════════ -->
-<section id="hyeyeon" style="padding:40px 20px;">
+<section id="hyeyeon" style="padding:40px 16px;">
   <img src="hyeyeon.png"
        alt="Hyeyeon's Family"
        style="max-width:440px; width:100%; border-radius:20px;
@@ -267,32 +272,31 @@
   <div class="scroll-hint">▼</div>
 </section>
 
-
-<!-- ════════════ SECTION 4 : CANVA SLIDES ════════════ -->
-<section id="slides" style="background:#fdf4ed; padding:60px 20px;">
-  <div style="text-align:center; margin-bottom:32px; animation:fadeUp .8s ease both;">
-    <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.3rem; color:#b05a7a; margin-bottom:4px;">오늘의 이야기</p>
-    <p style="font-family:'Abril Fatface',serif; font-size:2rem; color:#a82828; letter-spacing:3px;">OUR STORY</p>
+<!-- ════════════ SECTION 4 : PDF SLIDES ════════════ -->
+<section id="slides">
+  <div class="slides-title">
+    <p>오늘의 이야기</p>
+    <p>OUR STORY</p>
     <div style="width:60px; height:3px; background:linear-gradient(90deg,#c94040,#e8a090,#c94040); border-radius:4px; margin:14px auto 0;"></div>
   </div>
-  <div style="width:100%; max-width:800px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 8px 32px rgba(180,60,60,.15);">
-    <div style="position:relative; width:100%; padding-bottom:56.25%;">
-<iframe
-  src="slides.pdf"
-  style="width:100%; height:500px; border:none; display:block;"
-  loading="lazy">
-  <p style="text-align:center; padding:20px;">
-    PDF를 볼 수 없는 경우
-    <a href="slides.pdf" style="color:#c94040; font-weight:700;">여기서 다운로드</a>
-    하세요.
-  </p>
-</iframe>
-    </div>
+
+  <!-- PC: iframe으로 바로 보기 -->
+  <div class="pdf-desktop">
+    <iframe
+      src="slides.pdf"
+      loading="lazy">
+    </iframe>
   </div>
-  <p style="text-align:center; font-size:.85rem; color:#bbb; margin-top:16px;">
-    ✦ 슬라이드를 넘기며 함께 이야기 나눠요 ✦
-  </p>
-  <div class="scroll-hint" style="position:relative; bottom:auto; margin-top:24px; transform:none; left:auto; animation:bounce 1.5s ease-in-out infinite;">▼</div>
+
+  <!-- 모바일: 다운로드 버튼 + 안내 -->
+  <div class="pdf-mobile">
+    <a href="slides.pdf" download>
+      📄 슬라이드 보기 / 다운로드
+    </a>
+    <p>✦ 버튼을 눌러 슬라이드를 확인해요 ✦</p>
+  </div>
+
+  <div class="scroll-hint" style="position:relative; bottom:auto; margin-top:28px; transform:none; left:auto; animation:bounce 1.5s ease-in-out infinite;">▼</div>
 </section>
 
 <!-- ════════════ SECTION 5 : SEE YOU SOON ════════════ -->
@@ -307,22 +311,21 @@
     <p style="text-align:center; font-size:1rem; color:#c94040; font-weight:700; margin-bottom:20px;">
       📍 웨스틴조선 홍연
     </p>
-    <!-- 같이 축하할 일 -->
-    <div style="background:#fff0f0; border:2px dashed #e8a090; border-radius:16px; padding:20px 24px; margin-bottom:24px;">
+    <div style="background:#fff0f0; border:2px dashed #e8a090; border-radius:16px; padding:20px 16px; margin-bottom:24px;">
       <p style="text-align:center; font-weight:700; font-size:1.05rem; color:#a82828; margin-bottom:14px;">🎊 같이 축하할 일</p>
       <div style="display:flex; flex-direction:column; gap:12px;">
-        <div style="display:flex; align-items:center; gap:12px; background:#fff; border-radius:12px; padding:12px 16px;">
+        <div style="display:flex; align-items:center; gap:12px; background:#fff; border-radius:12px; padding:12px 14px;">
           <span style="font-size:1.6rem;">💍</span>
           <div>
             <p style="font-size:.8rem; color:#aaa; margin-bottom:2px;">4월 1일</p>
-            <p style="font-weight:700; font-size:.95rem;">위직 수정 결혼기념일 축하해요!</p>
+            <p style="font-weight:700; font-size:.9rem;">위직 수정 결혼기념일 축하해요!</p>
           </div>
         </div>
-        <div style="display:flex; align-items:center; gap:12px; background:#fff; border-radius:12px; padding:12px 16px;">
+        <div style="display:flex; align-items:center; gap:12px; background:#fff; border-radius:12px; padding:12px 14px;">
           <span style="font-size:1.6rem;">🎂</span>
           <div>
             <p style="font-size:.8rem; color:#aaa; margin-bottom:2px;">4월 4일</p>
-            <p style="font-weight:700; font-size:.95rem;">혜윤 생일 축하해요!</p>
+            <p style="font-weight:700; font-size:.9rem;">혜윤 생일 축하해요!</p>
           </div>
         </div>
       </div>
@@ -334,7 +337,6 @@
       혜연 &amp; 은직 드림 💌
     </p>
 
-    <!-- 레스토랑 사진 -->
     <div style="margin-top:24px; border-radius:16px; overflow:hidden; border:2px solid #e8a090;">
       <img src="hongyuan.png" alt="웨스틴조선 홍연"
            style="width:100%; display:block;">
@@ -342,8 +344,6 @@
     <p style="text-align:center; font-size:.85rem; color:#aaa; margin-top:8px;">
       웨스틴조선 홍연 — 광동식 중식
     </p>
-
-
   </div>
 </section>
 
